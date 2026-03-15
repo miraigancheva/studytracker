@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Study Groups{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Study Groups</h2>
+    <a href="{% url 'courses:group_add' %}" class="btn btn-dark btn-sm">+ Create Group</a>
+</div>
+
+{% if groups %}
+<div class="row g-3">
+    {% for group in groups %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ group.name }}</h5>
+                {% if group.description %}<p class="card-text small text-muted">{{ group.description }}</p>{% endif %}
+                <p class="small">
+                    {% for subject in group.subjects.all %}
+                        <span class="badge bg-secondary">{{ subject.name }}</span>
+                    {% empty %}
+                        <span class="text-muted">No subjects</span>
+                    {% endfor %}
+                </p>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'courses:group_edit' group.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'courses:group_delete' group.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No groups yet. <a href="{% url 'courses:group_add' %}">Create one.</a></p>
+{% endif %}
+{% endblock %}
