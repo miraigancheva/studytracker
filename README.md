@@ -57,3 +57,8 @@ grades/    - Grade model
 templates/ - HTML templates
 static/    - CSS
 ```
+## Highlights
+* Managed *Many-to-One* relationships between Subjects, Exams, and Grades.
+* Automated *GPA and weighted* average calculations based on credit hours and exam results.
+* Implemented a custom logic workflow to track exams (Upcoming ➔ Passed ➔ Failed ➔ Retake).
+
