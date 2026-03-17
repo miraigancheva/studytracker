@@ -1,6 +1,6 @@
 # StudyTrack
 
-A simple Django web app to track your university subjects, exams and grades.
+A simple Django web app to track your university/school subjects, exams and grades.
 
 ## What it does
 
